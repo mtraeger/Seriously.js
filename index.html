@@ -61,6 +61,7 @@
 
 		canvas {
 			border: black solid 1px;
+			
 		}
 
 		#transforms input[type=range] {
@@ -74,6 +75,12 @@
 		}
 
 		</style>
+		<script type="text/javascript">
+		function changeBg() {
+			var text = document.getElementById("bgImg").value;
+			document.getElementById("canvas").style.backgroundImage = "url(" + text + ")";
+		}
+		</script>
 	</head>
 	<body>
 		<button id="colorbutton">Color Bars</button>
@@ -93,6 +100,8 @@
 			<tr><td><label for="translate-z">Translate Z</label></td><td><input type="range" id="translate-z" min="-40" max="90" step="1" value="0"/></td></tr>
 			<tr><td><label for="perspective">Perspective</label></td><td><input type="range" id="perspective" min="0" max="90" step="1" value="0"/></td></tr>
 		</table>
+		Include Background Image from URL: <input placeholder="Background Image Url" name="bgImg" type="text" id="bgImg" onChange="changeBg()" />
+
 	<script type="text/javascript">
 
 	(function () {

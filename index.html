@@ -61,7 +61,7 @@
 
 		canvas {
 			border: black solid 1px;
-			
+
 		}
 
 		#transforms input[type=range] {
@@ -80,6 +80,7 @@
 			var text = document.getElementById("bgImg").value;
 			document.getElementById("canvas").style.backgroundImage = "url(" + text + ")";
 		}
+
 		</script>
 	</head>
 	<body>
@@ -103,8 +104,17 @@
 		Include Background Image from URL: <input placeholder="Background Image Url" name="bgImg" type="text" id="bgImg" onChange="changeBg()" />
 
 	<script type="text/javascript">
-
+	
 	(function () {
+		function createChangeEvent (elem){
+			var screen = elem;
+			//console.dir(e);
+			return function(e){
+				screen.value = e.target.value;
+				screen.dispatchEvent(new Event('change'));
+			}
+
+		}
 	var e, i,
 		input,
 		gUM,
@@ -425,6 +435,12 @@
 								element.value = input.defaultValue;
 							} else if (input.type === 'color') {
 								element = document.createElement('input');
+
+								//add a colorPicker
+								var color = document.createElement('input');
+								color.type = 'color';
+								color.addEventListener('change',createChangeEvent(element));
+								cell.appendChild(color);
 
 								//element.addEventListener('click', function(e) {
 								//	e = e || window.event;

@@ -191,7 +191,7 @@
 			var s = Seriously(),
 				blend = s.effect('blend'),
 				source = s.transform('reformat'),
-				transform2d = s.transform('2d'),
+//				transform2d = s.transform('2d'),
 				transform3d = s.transform('3d'),
 			//perspective = s.transform('perspective'),
 				options = document.getElementById('options'),
@@ -214,18 +214,19 @@
 			}
 
 			source.source = '#colorbars';
-			source.width = 720;
-			source.height = 540;
+			source.minWidth = 720;
+			source.minHeight = 540;
 
-			transform2d.source = source;
-			transform2d.scale(0.2);
-			transform2d.translate(-260, -200);
-			//todo: translate to lower left corner
+//			transform2d.source = source;
+//			transform2d.scale(0.2);
+//			transform2d.translate(-260, -200);
+//			//todo: translate to lower left corner
 
-			blend.top = transform2d;
-			blend.bottom = source;
+//			blend.top = transform2d;
+//			blend.bottom = source;
 
-			transform3d.source = blend;
+//			transform3d.source = blend;
+			transform3d.source = source;
 
 			target = s.target('#canvas');
 			target.source = transform3d;
@@ -326,7 +327,8 @@
 			}, true);
 
 			gUM && document.getElementById('camera').addEventListener('click', function () {
-				gUM.call(navigator, { video: true }, function(stream) {
+				gUM.call(navigator, { video: {width: 1280, height:720} }, function(stream) {
+//					gUM.call(navigator, { video: true }, function(stream) { //TODO correct size?
 					function resize() {
 						target.height = video.videoHeight;
 						target.width = video.videoWidth;

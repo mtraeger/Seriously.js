@@ -83,8 +83,16 @@
 		}
 
 		function requestFullscreen(){
-			console.log("asdf");
-			document.getElementById("canvas").requestFullScreen();
+			var canv = document.getElementById("canvas");
+			if (canv.requestFullscreen) {
+				canv.requestFullscreen();
+			} else if (canv.webkitRequestFullscreen) {
+				canv.webkitRequestFullscreen();
+			} else if (canv.mozRequestFullScreen) {
+				canv.mozRequestFullScreen();
+			} else if (canv.msRequestFullscreen) {
+				canv.msRequestFullscreen();
+			}
 		}
 
 		function createChangeEvent (elem){

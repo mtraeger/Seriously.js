@@ -163,7 +163,7 @@
 			}
 		}
 
-		gUM = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+		gUM = navigator.getUserMedia || navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 		if (!gUM) {
 			document.body.removeChild(document.getElementById('camera'));

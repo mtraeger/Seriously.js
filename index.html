@@ -192,7 +192,7 @@
 
 		window.addEventListener('DOMContentLoaded', function() {
 			var s = Seriously(),
-				blend = s.effect('blend'),
+//				blend = s.effect('blend'),
 				source = s.transform('reformat'),
 //				transform2d = s.transform('2d'),
 				transform3d = s.transform('3d'),
@@ -508,9 +508,11 @@
 				if (name) {
 					active = effectObjects[name];
 					active.form.style.display = 'block';
-					blend.bottom = active.effect;
+//					blend.bottom = active.effect;
+					transform3d.source = active.effect;
 				} else {
-					blend.bottom = source;
+//					blend.bottom = source;
+					transform3d.source = source;
 				}
 
 			}, false);
